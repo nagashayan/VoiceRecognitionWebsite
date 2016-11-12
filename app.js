@@ -95,6 +95,8 @@
         },
         onresult: function(msg) {
             LOG(msg, 'in');
+            console.log("logging msg");
+            console.log(msg.result_type);
             console.log(msg);
             if (msg.result_type === "NMDP_TTS_CMD" || msg.result_type === "NVC_TTS_CMD") {
                 dLog(JSON.stringify(msg, null, 2), $ttsDebug);
@@ -104,7 +106,16 @@
             } else if (msg.result_type == "NDSP_ASR_APP_CMD") {
                 if(msg.result_format === "nlu_interpretation_results") {
                     try{
+
                         dLog("interpretations = " + JSON.stringify(msg.nlu_interpretation_results.payload.interpretations, null, 2), $asrDebug);
+                        var interpretations = msg.nlu_interpretation_results.payload.interpretations[0];
+                        console.log("after interpretations1 = "+msg.nlu_interpretation_results.payload.interpretations[0].action.intent.value);
+                        console.log("after interpretations2 = "+msg.nlu_interpretation_results.payload.interpretations[0].literal);
+                        console.log("after interpretations4 = "+msg.nlu_interpretation_results.payload.interpretations[0].concepts["SEARCH_QUERY"][0].literal);
+                        console.log("after interpretations3 = "+msg.nlu_interpretation_results.payload.interpretations[0].concepts["SEARCH_ENGINE"][0].literal);
+
+
+
                     }catch(ex){
                         dLog(JSON.stringify(msg, null, 2), $asrDebug, true);
                     }
@@ -122,6 +133,7 @@
                 } else {
                     dLog(JSON.stringify(msg, null, 2), $nluDebug);
                 }
+                console.log("after interpretations2"+JSON.stringify(msg.nlu_interpretation_results.payload.interpretations, null, 2));
                 $nluExecute.prop('disabled', false);
             }
         },
