@@ -2,10 +2,10 @@
 
 var URL = 'wss://ws.dev.nuance.com/?';
 
-var APP_ID = "NMDPTRIAL_biswal_sid_gmail_com20161110092132";
-var APP_KEY = "67ca8cc1e4baccb25db67fc777da06a9809df865981c510b44989f530a045b71cee732b2a1ff65ffb5e4c62dbfcdd63f6acea502eaf60d2e8fac8199b1dc0a7f";
+var APP_ID = "NMDPTRIAL_mothicbe_gmail_com20161112153836";
+var APP_KEY = "94a417c14c75af39b41520c11c6797561fbbc1005d508570ba2bace4c92b155dcf2c1e1ca1cd5555e37517ffdcae56fc6a17fcc767813721ace305750f1ad2de";
 var USER_ID = "";
-var NLU_TAG = "M4251_A2049_V1";
+var NLU_TAG = "M4275_A2063";
 
 // ASR
 // See: https://developer.nuance.com/public/index.php?task=supportedLanguages
