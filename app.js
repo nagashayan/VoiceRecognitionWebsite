@@ -120,16 +120,23 @@
                         var colorintr = interpretations3;
                         console.log("after interpretations3 = "+colorintr);
 
-                        if(interpretations4.indexOf('background')){
+                        if(interpretations4.indexOf('background') > -1){
+                          console.log("change the background");
                           $("#bodyele").css("background-color",colorintr.trim());
                           $("#speech-nlu").css("background-color",colorintr.trim());
                           console.log($("#bodyele").css("background-color",colorintr));
                         }
-                        else if(interpretations4.indexOf('font')){
+                        else if(interpretations4.indexOf('font') > -1){
                          console.log("change the font");
                           $("#bodyele").css("color",colorintr.trim());
-                          $("#bodyele div,h1,p").css("background-color",colorintr.trim());
-                          console.log($("#bodyele").css("background-color",colorintr));
+                          $("#bodyele div,h1,p").css("color",colorintr.trim());
+                          console.log($("#bodyele div,h1,p").css("color",colorintr.trim()));
+                        }
+                        else if(interpretations4.indexOf('font size') > -1){
+                         console.log("change the font size");
+                          $("#bodyele").css("font-size",colorintr.trim());
+                          $("#bodyele div,h1,p").css("font-size",colorintr.trim());
+                          console.log($("#bodyele div,h1,p").css("font-size",colorintr.trim()));
                         }
                         else if (color.includes("add")){
                            console.log('this is to add a header to the page');
