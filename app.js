@@ -167,7 +167,7 @@
                     console.log("debugging");
                     //console.log($( "#asr_debug_output" ).find( "pre" )[0].innerHTML);
                     var errorintr = $( "#asr_debug_output" ).find( "pre" )[0].innerHTML;
-                    errorintr = errorintr.substring(errorintr.indexOf("nlu_interpretation_results"),1000);
+                    errorintr = errorintr.substring(errorintr.indexOf("nlu_interpretation_results"));
                     console.log(errorintr);
                     if(errorintr.indexOf('font size') > -1){
                      console.log("change the font size");
@@ -175,17 +175,7 @@
                       $("#bodyele div,h1,p").css("font-size","30px");
                       console.log($("#bodyele div,h1,p").css("font-size","30px"));
                     }
-                    var intr = msg.nlu_interpretation_results.payload.interpretations[0].action.intent.value;
-                    var interpretations2 = msg.nlu_interpretation_results.payload.interpretations[0].literal;
-                    var interpretations4 = msg.nlu_interpretation_results.payload.interpretations[0].concepts["element"][0].literal;
-                    var interpretations3 = msg.nlu_interpretation_results.payload.interpretations[0].concepts["color"][0].literal;
 
-                    console.log("after interpretations1 = "+intr);
-
-                    console.log("after interpretations2 = "+interpretations2);
-                    console.log("after interpretations4 = "+interpretations4);
-                    var colorintr = interpretations3;
-                    console.log("after interpretations3 = "+colorintr);
 
 
                 }
