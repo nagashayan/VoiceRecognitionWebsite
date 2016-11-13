@@ -108,11 +108,16 @@
                     try{
 
                         dLog("interpretations = " + JSON.stringify(msg.nlu_interpretation_results.payload.interpretations, null, 2), $asrDebug);
-                        var interpretations = msg.nlu_interpretation_results.payload.interpretations[0];
-                        console.log("after interpretations1 = "+msg.nlu_interpretation_results.payload.interpretations[0].action.intent.value);
+                        var intr = msg.nlu_interpretation_results.payload.interpretations[0].action.intent.value;
+                        console.log("after interpretations1 = "+intr);
                         console.log("after interpretations2 = "+msg.nlu_interpretation_results.payload.interpretations[0].literal);
-                        console.log("after interpretations4 = "+msg.nlu_interpretation_results.payload.interpretations[0].concepts["SEARCH_QUERY"][0].literal);
-                        console.log("after interpretations3 = "+msg.nlu_interpretation_results.payload.interpretations[0].concepts["SEARCH_ENGINE"][0].literal);
+                        console.log("after interpretations4 = "+msg.nlu_interpretation_results.payload.interpretations[0].concepts["element"][0].literal);
+                        var colorintr = msg.nlu_interpretation_results.payload.interpretations[0].concepts["color"][0].literal;
+                        console.log("after interpretations3 = "+colorintr);
+
+                          $("#bodyele").css("background-color",colorintr.trim());//speech-nlu
+                          $("#speech-nlu").css("background-color",colorintr.trim());
+                          console.log($("#bodyele").css("background-color",colorintr));
 
 
 
