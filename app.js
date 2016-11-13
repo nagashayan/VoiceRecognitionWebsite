@@ -125,6 +125,13 @@
                           $("#speech-nlu").css("background-color",colorintr.trim());
                           console.log($("#bodyele").css("background-color",colorintr));
                         }
+                        else if(interpretations2.indexOf('foreground')){
+                          $("#bodyele").css("background-color",colorintr.trim());
+                          $("#speech-nlu").css("background-color",colorintr.trim());
+                          console.log($("#bodyele").css("background-color",colorintr));
+                        }
+                        
+
 
 
 
