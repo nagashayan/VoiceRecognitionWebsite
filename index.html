@@ -21,7 +21,20 @@
     <script src='lib/resampler.js'></script>
     <script src='lib/speex.js'></script>
     <script src='lib/nuance.js'></script>
+	
 </head>
+<style type="text/css">
+
+    #show{
+        margin:100px; 
+    }
+    
+	p{
+	color:black;
+	
+	}
+
+</style>
 <body id="bodyele">
 
     <div id="error">
@@ -43,18 +56,18 @@
 
     <div id="content" class='container'>
         <!--  HEADER -->
-        <h1 class='page-header'>
+        <!--<h1 class='page-header'>
             <img style="margin-left: 25px;" src="images/NMIX.png" width="220px"> Runtime Execution Console
-        </h1>
+        </h1>-->
 
         <div class='' style='min-height:400px;padding:0px;'>
 
             <ul class="nav nav-tabs nav-justified" role="tablist">
-                <li role="presentation" class="active"><a role="tab" data-toggle="tab" href="#credentials"><i class='fa fa-key'></i> Credentials & Settings</a></li>
-                <li role="presentation"><a role="tab" data-toggle="tab" href="#text-nlu">① Text NLU</a> <div class='status-indicator'>&nbsp;</div></li>
-                <li role="presentation"><a role="tab" data-toggle="tab" href="#speech-nlu">② Speech Recognition (w/ NLU)</a> <div class='status-indicator'>&nbsp;</div></li>
-                <li role="presentation"><a role="tab" data-toggle="tab" href="#text-to-speech">③ Text To Speech</a> <div class='status-indicator'>&nbsp;</div></li>
-                <li role="presentation"><a role="tab" data-toggle="tab" href="#logs"><i class='fa fa-database'></i> Logs</a></li>
+                <!--<li role="presentation" class="active"><a role="tab" data-toggle="tab" href="#credentials"><i class='fa fa-key'></i> Credentials & Settings</a></li>
+                <li role="presentation"><a role="tab" data-toggle="tab" href="#text-nlu">① Text NLU</a> <div class='status-indicator'>&nbsp;</div></li>-->
+                <li role="presentation"><a role="tab" data-toggle="tab" href="#speech-nlu"><h1>Speak here to edit the webpage</h1></a> <div class='status-indicator'>&nbsp;</div></li>
+                <!--<li role="presentation"><a role="tab" data-toggle="tab" href="#text-to-speech">③ Text To Speech</a> <div class='status-indicator'>&nbsp;</div></li>
+                <li role="presentation"><a role="tab" data-toggle="tab" href="#logs"><i class='fa fa-database'></i> Logs</a></li>-->
             </ul>
 
             <div class="tab-content">
@@ -154,22 +167,22 @@
                 <!--  ASR / NLU -->
                 <div role="tabpanel" id="speech-nlu" class='col-md-12 tab-pane fade'>
                     <div id="asr" class='panel panel-default'>
-                        <div class='panel-heading'>
+                        <!--<div class='panel-heading'>
                             <strong>Speech Recognition with Natural Language Understanding (optional, using the Context Tag defined)</strong>
-                        </div>
+                        </div>-->
                         <div class='panel-body'>
                             <div class="checkbox">
                                 <label>
                                     <input id="use_nlu" type="checkbox" checked/> Enable Natural Language Understanding (+ Speech Recognition Customization)
                                 </label>
                             </div>
-                            <canvas id="asr_viz" height="220" ></canvas>
+                            <canvas id="asr_viz" height="150" ></canvas>
                             <br/>
                             <button id='asr_go' type='button' class='btn btn-primary btn-block'>
                                 <i class='fa fa-microphone'></i> <span id='asr_label'>RECORD</span>
                             </button>
                         </div>
-                        <div id='asr_debug_output' class='panel-body' ></div>
+                       <!-- <div id='asr_debug_output' class='panel-body' ></div>-->
                     </div>
                 </div>
 
@@ -210,9 +223,17 @@
         </div>
 
         <hr/>
-
+		<div class="col-lg-12" id="show">
+			<p> Sick of designing site by using button clicks ?? 
+			</p>
+			<p> Why don't you use just your voice to build a website?  
+				We have a solution for you.  We will demonstrate it!  
+			</p>
+			<p> All you need to do is just Talk to Our Child
+			</p>
+		</div>
         <!--  FOOTER -->
-        <footer class='col-md-12 right-aligned'>
+        <!--<footer class='col-md-12 right-aligned'>
             &copy; Nuance Communications 2016 | <a href="mailto:developerrelations@nuance.com"> <i class='fa fa-question'></i> Contact The Developer Relations Team</a>
         </footer>
 
