@@ -95,9 +95,16 @@
         },
         onresult: function(msg) {
             LOG(msg, 'in');
-            console.log("logging msg");
-            console.log(msg.result_type);
-            console.log(msg);
+            console.log(msg); // probably this is where the JSON is stored
+            console.log('server getting data');
+            
+
+
+           
+
+
+            console.log(msg.nlu_interpretation_results.payload.interpretations[0].action.intent.value);
+
             if (msg.result_type === "NMDP_TTS_CMD" || msg.result_type === "NVC_TTS_CMD") {
                 dLog(JSON.stringify(msg, null, 2), $ttsDebug);
                 $ttsGo.prop('disabled', false);
@@ -106,29 +113,48 @@
             } else if (msg.result_type == "NDSP_ASR_APP_CMD") {
                 if(msg.result_format === "nlu_interpretation_results") {
                     try{
-
                         dLog("interpretations = " + JSON.stringify(msg.nlu_interpretation_results.payload.interpretations, null, 2), $asrDebug);
+                         
                         var intr = msg.nlu_interpretation_results.payload.interpretations[0].action.intent.value;
-                        var interpretations2 = msg.nlu_interpretation_results.payload.interpretations[0].literal;
-                        var interpretations4 = msg.nlu_interpretation_results.payload.interpretations[0].concepts["element"][0].literal;
-                        var interpretations3 = msg.nlu_interpretation_results.payload.interpretations[0].concepts["color"][0].literal;
+                       var interpretations2 = msg.nlu_interpretation_results.payload.interpretations[0].literal;
+                       var interpretations4 = msg.nlu_interpretation_results.payload.interpretations[0].concepts["element"][0].literal;
+                       var interpretations3 = msg.nlu_interpretation_results.payload.interpretations[0].concepts["color"][0].literal;
 
-                        console.log("after interpretations1 = "+intr);
+                       console.log("after interpretations1 = "+intr);
 
-                        console.log("after interpretations2 = "+interpretations2);
-                        console.log("after interpretations4 = "+interpretations4);
-                        var colorintr = interpretations3;
-                        console.log("after interpretations3 = "+colorintr);
+                       console.log("after interpretations2 = "+interpretations2);
+                       console.log("after interpretations4 = "+interpretations4);
+                       var colorintr = interpretations3;
+                       console.log("after interpretations3 = "+colorintr);
 
-                        if(interpretations2.indexOf('background')){
-                          $("#bodyele").css("background-color",colorintr.trim());
-                          $("#speech-nlu").css("background-color",colorintr.trim());
-                          console.log($("#bodyele").css("background-color",colorintr));
-                        }
+                       if(interpretations2.indexOf('background')){
+                         $("#bodyele").css("background-color",colorintr.trim());
+                         $("#speech-nlu").css("background-color",colorintr.trim());
+                         console.log($("#bodyele").css("background-color",colorintr));
+                       }
+                       else if(interpretations2.indexOf('foreground')){
+                         $("#bodyele").css("background-color",colorintr.trim());
+                         $("#speech-nlu").css("background-color",colorintr.trim());
+                         console.log($("#bodyele").css("background-color",colorintr));
+                       }
+                       else if (color.includes("add")){
+                          console.log('this is to add a header to the page');
+                          // find how to add an element to a page
 
+                      }
 
+                      else if (color.includes('delete'))
+                      {
+                          console.log('this is to delete certain element');
+                          // find how to delete certain element from the page
+                          document.body.style.backgroundColor = "blue";
 
+                      }
+                      if( temp.includes('move')){
 
+                      }                            
+
+        
                     }catch(ex){
                         dLog(JSON.stringify(msg, null, 2), $asrDebug, true);
                     }
@@ -137,8 +163,10 @@
                 }
                 $nluExecute.prop('disabled', false);
             } else if (msg.result_type === "NDSP_APP_CMD") {
+
                 if(msg.result_format === "nlu_interpretation_results") {
                     try{
+                        console.log('getting output from servere')
                         dLog("interpretations = " + JSON.stringify(msg.nlu_interpretation_results.payload.interpretations, null, 2), $nluDebug);
                     }catch(ex){
                         dLog(JSON.stringify(msg, null, 2), $nluDebug, true);
@@ -146,7 +174,6 @@
                 } else {
                     dLog(JSON.stringify(msg, null, 2), $nluDebug);
                 }
-                console.log("after interpretations2"+JSON.stringify(msg.nlu_interpretation_results.payload.interpretations, null, 2));
                 $nluExecute.prop('disabled', false);
             }
         },
